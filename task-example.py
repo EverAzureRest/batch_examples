@@ -7,9 +7,9 @@ import datetime
 import time
 
 # Batch account credentials
-BATCH_ACCOUNT_NAME = 'u7rdeqajlojx2batch'
-BATCH_ACCOUNT_URL = 'https://u7rdeqajlojx2batch.westus2.batch.azure.com'
-BATCH_ACCOUNT_KEY = '/S4RxX251jPOoebnGmyIR8h35LK3wYLNSDMuj+uVnCSp3dC+JPKwVJlMi08q8tZ4HGjDsdIJprri9cv/sWSjTw=='
+BATCH_ACCOUNT_NAME = ''
+BATCH_ACCOUNT_URL = ''
+BATCH_ACCOUNT_KEY = ''
 
 # Create a Batch service client. We'll now be interacting with the Batch
 # service in addition to Storage.
