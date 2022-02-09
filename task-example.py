@@ -39,19 +39,34 @@ job = batch.models.JobAddParameter(
     display_name='myBatchJob',
     pool_info=batch.models.PoolInformation(
         pool_id=pool.id
-    )
+    ),
+    uses_task_dependencies = 'true'
 )
 
 job1 = batch_client.job.add(job)
 
-taskparams = batch.models.TaskAddParameter(
+task1 = batch.models.TaskAddParameter(
     id='task1',
     command_line='cmd /c echo "Hello From Batch" >task.txt'
+
 )
 
-batch_client.task.add(
+dependentTasks = list()
+dependentTasks.append(task1.id)
+
+task2 = batch.models.TaskAddParameter(
+    id='task2',
+    command_line = 'cmd /c echo "this is task2 - should execute after task 1" >task2.txt',
+    depends_on = batch.models.TaskDependencies(task_ids=dependentTasks)
+)
+
+tasks = list()
+tasks.append(task1)
+tasks.append(task2)
+
+batch_client.task.add_collection(
     job_id=job.id,
-    task=taskparams
+    value=tasks
 )
 
 # Perform action with the batch_client

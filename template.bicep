@@ -81,7 +81,7 @@ resource examplePool 'Microsoft.Batch/batchAccounts/pools@2021-06-01' = {
     interNodeCommunication: 'Disabled'
     taskSlotsPerNode: 1
     taskSchedulingPolicy: {
-       nodeFillType: 'Spread'
+       nodeFillType: 'Pack'
     }
     deploymentConfiguration: {
       virtualMachineConfiguration: {
@@ -135,3 +135,4 @@ resource batchApp1Version 'Microsoft.Batch/batchAccounts/applications/versions@2
 */
 output storageAccountName string = exampleStorage.name
 output batchAccountName string = batchAccountName
+
